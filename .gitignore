@@ -1,0 +1,16 @@
+build/
+.Xil/
+xsim.dir/
+*.jou
+*.log
+*.pb
+*.wdb
+*.bit
+*.xsa
+*.elf
+*.o
+*.obj
+*.exe
+__pycache__/
+*.pyc
+bonus/runtime-software/debayer_output_*.h

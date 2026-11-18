@@ -1,0 +1,9 @@
+{
+  "date": "2026-11-18",
+  "simulator": "Vivado Simulator 2022.2",
+  "fixture": "4x4 GBRG",
+  "simulationStopNs": 265,
+  "pixels": 16,
+  "channelsCompared": 48,
+  "mismatches": 0
+}
