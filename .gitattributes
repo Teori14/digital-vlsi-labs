@@ -6,3 +6,15 @@
 *.tcl text eol=lf
 *.py text eol=lf
 *.mjs text eol=lf
+
+# Pixel arrays are datasets, not application logic.
+**/bayer_input*.h linguist-detectable=false
+**/bayer_runtime_inputs.h linguist-detectable=false
+
+# Supplied examples and reference-platform infrastructure.
+reference/** linguist-vendored=true
+lab-05/reference-platform/** linguist-vendored=true
+
+# Generated Vivado exports; retain handwritten build scripts in statistics.
+**/scripts/dvlsi_lab6_prj_*.tcl linguist-generated=true
+**/design_1_wrapper.vhd linguist-generated=true

@@ -2,6 +2,17 @@
 
 The extension changes image dimensions through ARM-side configuration instead of synthesizing a separate fixed-size design for every image. Bulk pixels still travel through DMA; the configuration uses a small control register.
 
+## Key implementation files
+
+| Area | Source | Role |
+| :--- | :--- | :--- |
+| Streaming datapath | [Runtime line buffers](runtime-hardware/vhdl_srcs/debayer_partA_final_line_buffers.vhd) | Form the 3×3 neighborhood using the configured image dimension |
+| Color interpolation | [Pipelined core](runtime-hardware/vhdl_srcs/debayer_core_pipelined.vhd) | Calculate missing RGB components |
+| System integration | [Zynq top](runtime-hardware/vhdl_srcs/dvlsi_lab6_top.vhd) | Connect configuration and pixel-stream interfaces |
+| Vivado flow | [Build script](runtime-hardware/scripts/build_bonus_runtime.tcl) | Extend the supplied platform with runtime configuration |
+| ARM application | [Vitis C source](runtime-software/main_bonus_runtime_separate_inputs.c) | Select input size, manage DMA/cache and compare the result |
+| Reference data | [Python generator](runtime-software/generate_debayer_outputs.py) | Generate RGBX reference headers from the input images |
+
 ## Saved configurations
 
 | Folder | Configuration |

@@ -7,6 +7,16 @@ A collection of collaboratively developed laboratory work covering combinational
 
 This repository was organized after the coursework from saved Vivado/Vitis projects and reports. Its initial Git history records publication of that archive, rather than the original development timeline.
 
+## Featured: runtime-configurable Debayer
+
+**[Explore the bonus project →](bonus/README.md)**
+
+The bonus extends the image-processing pipeline with ARM-controlled image dimensions, separating the configuration path from DMA pixel transfers. It combines VHDL line buffers and interpolation, AXI GPIO configuration, Vivado Tcl integration and a Vitis C application with cache maintenance and software-reference comparison.
+
+The later software has dedicated inputs for **64×64, 128×128, 256×256, 512×512 and 1024×1024**. These are supported input selections in that source; the archived notes do not establish a verified board run for every size.
+
+[Runtime VHDL](bonus/runtime-hardware/vhdl_srcs/) · [Vivado build flow](bonus/runtime-hardware/scripts/build_bonus_runtime.tcl) · [Vitis application](bonus/runtime-software/main_bonus_runtime_separate_inputs.c)
+
 ## Explore the laboratories
 
 | Laboratory | What was built | Techniques |
@@ -19,7 +29,7 @@ This repository was organized after the coursework from saved Vivado/Vitis proje
 | [06 · Zynq integration](lab-06/README.md) | Debayer accelerator connected to DDR through DMA | AXI4-Stream, PS/PL integration, C reference comparison |
 | [Bonus · Runtime configuration](bonus/README.md) | Change image dimensions from ARM software | AXI GPIO control, DMA, cache maintenance |
 
-## Featured project: Bayer to RGB
+## How the image pipeline works
 
 The image-processing core accepts an 8-bit GBRG Bayer stream. Two line buffers and shift registers form a 3×3 neighborhood; the missing color components are calculated from neighboring samples using additions and shifts. Boundary pixels use zero padding.
 
